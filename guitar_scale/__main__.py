@@ -95,7 +95,7 @@ notes = {
 }
 
 TUNING = [4, 11, 7, 2, 9, 4]  # E, B, G, D, A, E
-TAB_WIDTH = 6
+TAB_WIDTH = 3
 
 
 def print_guitar(root: int, xs: list[int], frets: int) -> None:
