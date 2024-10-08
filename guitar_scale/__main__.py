@@ -94,20 +94,23 @@ notes = {
     11: "b",
 }
 
-TUNING = [4, 11, 7, 2, 9, 4]  # E, B, G, D, A, E
+TUNING = [-1, 4, 11, 7, 2, 9, 4]  # <fret_number>, E, B, G, D, A, E
 TAB_WIDTH = 3
 
 
 def print_guitar(root: int, xs: list[int], frets: int) -> None:
     for open_string in TUNING:
         for fret in range(frets + 1):
-            y = (open_string + fret) % 12
-            if y == root:
-                s = colored(notes[y].ljust(TAB_WIDTH), "light_cyan", attrs=["reverse"])
-            elif y in xs:
-                s = colored(notes[y].ljust(TAB_WIDTH), "light_blue", attrs=["reverse"])
+            if open_string == -1:
+                s = colored(str(fret).ljust(TAB_WIDTH), "light_grey", attrs=["reverse"])
             else:
-                s = notes[y].ljust(TAB_WIDTH)
+                y = (open_string + fret) % 12
+                if y == root:
+                    s = colored(notes[y].ljust(TAB_WIDTH), "light_cyan", attrs=["reverse"])
+                elif y in xs:
+                    s = colored(notes[y].ljust(TAB_WIDTH), "light_blue", attrs=["reverse"])
+                else:
+                    s = notes[y].ljust(TAB_WIDTH)
             print(f"|{s}", end="")
         print("|")
 
