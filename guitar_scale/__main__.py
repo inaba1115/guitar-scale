@@ -44,39 +44,24 @@ scales = [
 
 choices = [x for x, _ in scales]
 degrees = dict((x, y) for x, y in scales)
-
-notes = {
-    0: "c",
-    1: "c#",
-    2: "d",
-    3: "d#",
-    4: "e",
-    5: "f",
-    6: "f#",
-    7: "g",
-    8: "g#",
-    9: "a",
-    10: "a#",
-    11: "b",
-}
-
-TUNING = [-1, 4, 11, 7, 2, 9, 4]  # <fret_number>, E, B, G, D, A, E
-TAB_WIDTH = 3
+notes = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"]
+tuning = [-1, 4, 11, 7, 2, 9, 4]  # <fret_number>, E, B, G, D, A, E
+tab_width = 3
 
 
 def print_guitar(root: int, xs: list[int], frets: int) -> None:
-    for open_string in TUNING:
+    for open_string in tuning:
         for fret in range(frets + 1):
             if open_string == -1:
-                s = colored(str(fret).ljust(TAB_WIDTH), "light_grey", attrs=["reverse"])
+                s = colored(str(fret).ljust(tab_width), "light_grey", attrs=["reverse"])
             else:
                 y = (open_string + fret) % 12
                 if y == root:
-                    s = colored(notes[y].ljust(TAB_WIDTH), "light_cyan", attrs=["reverse"])
+                    s = colored(notes[y].ljust(tab_width), "light_cyan", attrs=["reverse"])
                 elif y in xs:
-                    s = colored(notes[y].ljust(TAB_WIDTH), "light_blue", attrs=["reverse"])
+                    s = colored(notes[y].ljust(tab_width), "light_blue", attrs=["reverse"])
                 else:
-                    s = notes[y].ljust(TAB_WIDTH)
+                    s = notes[y].ljust(tab_width)
             print(f"|{s}", end="")
         print("|")
 
