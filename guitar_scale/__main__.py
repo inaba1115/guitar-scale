@@ -66,7 +66,7 @@ def print_guitar(root: int, xs: list[int], frets: int) -> None:
         print("|")
 
 
-parser = argparse.ArgumentParser()
+parser = argparse.ArgumentParser(prog="guitar_scale")
 parser.add_argument("-r", "--root", type=int, help="root note degree", default=0)
 parser.add_argument("-s", "--scale", type=str, help="scale name", default="major", choices=choices)
 parser.add_argument("-f", "--frets", type=int, help="fret range", default=20)
