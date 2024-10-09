@@ -43,7 +43,6 @@ scales = [
 ]
 
 choices = [x for x, _ in scales]
-degrees = dict((x, y) for x, y in scales)
 notes = ["c", "c#", "d", "d#", "e", "f", "f#", "g", "g#", "a", "a#", "b"]
 tuning = [-1, 4, 11, 7, 2, 9, 4]  # <fret_number>, E, B, G, D, A, E
 tab_width = 3
@@ -78,5 +77,5 @@ if args.scales:
     sys.exit(0)
 
 
-xs = [(x + args.root) % 12 for x in degrees[args.scale]]
+xs = [(x + args.root) % 12 for x in dict(scales)[args.scale]]
 print_guitar(args.root, xs, args.frets)
